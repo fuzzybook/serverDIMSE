@@ -29,7 +29,7 @@ type ServerConfig struct {
 func main() {
 	// --- Flags ---
 	aeTitle := flag.String("aet", "MYPACS", "AE Title del server DICOM (SCP)")
-	port := flag.String("port", "104", "Porta DICOM in ascolto (es. 104)")
+	port := flag.String("port", "3000", "Porta DICOM in ascolto (es. 3000)")
 	storageDir := flag.String("storage", "./dicom-inbox", "Directory dove salvare i file DICOM ricevuti")
 	storeScpPath := flag.String("storescp", "storescp", "Path al binario storescp (DCMTK)")
 
@@ -56,9 +56,9 @@ func main() {
 		log.Fatalf("Impossibile creare la cartella di storage: %v", err)
 	}
 
-	// Controllo base sulla porta 104 su sistemi *nix
-	if cfg.Port == "104" && (runtime.GOOS == "linux" || runtime.GOOS == "darwin") {
-		log.Println("ATTENZIONE: la porta 104 richiede permessi elevati su Linux/macOS (usa sudo o cambia porta).")
+	// Controllo base sulla porta 3000 su sistemi *nix
+	if cfg.Port == "3000" && (runtime.GOOS == "linux" || runtime.GOOS == "darwin") {
+		log.Println("ATTENZIONE: la porta 3000 richiede permessi elevati su Linux/macOS (usa sudo o cambia porta).")
 	}
 
 	// Context per gestire stop/graceful shutdown
